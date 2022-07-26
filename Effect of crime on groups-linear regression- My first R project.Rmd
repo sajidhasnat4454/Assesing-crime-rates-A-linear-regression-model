@@ -1,0 +1,45 @@
+---
+title: "crime rate"
+author: "sajid"
+date: "`r Sys.Date()`"
+output: word_document
+---
+
+```{r}
+library(wooldridge)
+library(dplyr)
+```
+
+
+```{r}
+data('crime1)
+```
+```{r}
+str('crime1')
+```
+
+
+```{r}
+head(crime1)
+```
+
+```{r}
+summary(crime1)
+```
+
+
+```{r}
+reg <- lm (narr86 ~ pcnv,crime1)
+summary(reg)
+```
+This shows a correlation between the number of times there was arrests that were happening and the proportion of prior convictions.We notice that there is a negative intercept between previous convictions and arrests in the year 1986.Now let's check the correlation between legal income and felony arrests to understand how much of these crimes were crimes of necessity
+```{r}
+reg1 <- lm (nfarr86 ~ inc86,crime1)
+summary(reg1)
+```
+The negative correlation indicates that if you have less income ,then you are more likely to be arrested through felony.Now lets check whether or not being black has any effect on the number of arrests.
+```{r}
+reg2 <- lm (narr86 ~ black,crime1)
+summary(reg2)
+```
+This has a highly postive estamate as we can see a 34 percent liklihood of being arrested if you are black.
